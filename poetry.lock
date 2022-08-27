@@ -57,6 +57,18 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "djangorestframework"
+version = "3.13.1"
+description = "Web APIs for Django, made easy."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = ">=2.2"
+pytz = "*"
+
+[[package]]
 name = "iniconfig"
 version = "1.1.1"
 description = "iniconfig: brain-dead simple config-ini parsing"
@@ -128,6 +140,14 @@ tomli = ">=1.0.0"
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
+name = "pytz"
+version = "2022.2.1"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.2"
 description = "A non-validating SQL parser."
@@ -154,7 +174,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "337e3614538aaadf401e3ff7417596d252b03f1a0fc5649508eb95f59b708753"
+content-hash = "a7dc4e0d32b220973ea59f79fa578a92b75fad74aa8469fc3d69ddbfef1a382a"
 
 [metadata.files]
 asgiref = [
@@ -175,6 +195,10 @@ colorama = [
 django = [
     {file = "Django-4.1-py3-none-any.whl", hash = "sha256:031ccb717782f6af83a0063a1957686e87cb4581ea61b47b3e9addf60687989a"},
     {file = "Django-4.1.tar.gz", hash = "sha256:032f8a6fc7cf05ccd1214e4a2e21dfcd6a23b9d575c6573cacc8c67828dbe642"},
+]
+djangorestframework = [
+    {file = "djangorestframework-3.13.1-py3-none-any.whl", hash = "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"},
+    {file = "djangorestframework-3.13.1.tar.gz", hash = "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -199,6 +223,10 @@ pyparsing = [
 pytest = [
     {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
     {file = "pytest-7.1.2.tar.gz", hash = "sha256:a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"},
+]
+pytz = [
+    {file = "pytz-2022.2.1-py2.py3-none-any.whl", hash = "sha256:220f481bdafa09c3955dfbdddb7b57780e9a94f5127e35456a48589b9e0c0197"},
+    {file = "pytz-2022.2.1.tar.gz", hash = "sha256:cea221417204f2d1a2aa03ddae3e867921971d0d76f14d87abb4414415bbdcf5"},
 ]
 sqlparse = [
     {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
