@@ -6,15 +6,32 @@ from Product.serializers.product_serializer import ProductSerializer
 
 
 class OrderSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Order
-    fields = ['product', 'total', 'user', 'product_id', ]
+    class Meta:
+        model = Order
+        fields = [
+            "product",
+            "total",
+            "user",
+            "products_id",
+        ]
+        extra_kwargs = {"product": {"required": False}}
 
-  product = ProductSerializer(read_only=True, many=True)
-  product_id = serializers.PrimaryKeyRelatedField(
-    queryset=Product.objects.all(), write_only=True, many=True
-  )
-  total = serializers.SerializerMethodField()
+    product = ProductSerializer(read_only=True, many=True)
+    products_id = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all(), write_only=True, many=True
+    )
+    total = serializers.SerializerMethodField()
 
-  def get_total(self, instance):
-    return sum([product.price for product in instance.product.all()])
+    def get_total(self, instance):
+        total = sum([product.price for product in instance.product.all()])
+        return total
+
+    def create(self, validated_data):
+        product_data = validated_data.pop("products_id")
+
+        order = Order.objects.create(**validated_data)
+
+        for product in product_data:
+            order.product.add(product)
+
+        return order
