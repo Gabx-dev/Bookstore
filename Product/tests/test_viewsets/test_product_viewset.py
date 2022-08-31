@@ -20,24 +20,21 @@ class TestProductViewSet(APITestCase):
         data = json.loads(res.content)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(data[0]["id"], self.product.id)
-
-        self.assertEqual(data[0]["title"], self.product.title)
-
-        self.assertEqual(data[0]["description"], self.product.description)
-
-        self.assertEqual(data[0]["price"], self.product.price)
-
-        self.assertEqual(data[0]["active"], self.product.active)
-
-        self.assertEqual(data[0]["category"][0]["title"], self.category.title)
-
+        self.assertEqual(data["results"][0]["id"], self.product.id)
+        self.assertEqual(data["results"][0]["title"], self.product.title)
+        self.assertEqual(data["results"][0]["description"], self.product.description)
+        self.assertEqual(data["results"][0]["price"], self.product.price)
+        self.assertEqual(data["results"][0]["active"], self.product.active)
         self.assertEqual(
-            data[0]["category"][0]["description"], self.category.description
+            data["results"][0]["category"][0]["title"], self.category.title
+        )
+        self.assertEqual(
+            data["results"][0]["category"][0]["description"], self.category.description
         )
 
-        self.assertEqual(data[0]["category"][0]["active"], self.category.active)
+        self.assertEqual(
+            data["results"][0]["category"][0]["active"], self.category.active
+        )
 
     def test_create_product(self):
         category = CategoryFactory()
