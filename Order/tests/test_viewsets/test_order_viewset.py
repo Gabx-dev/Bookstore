@@ -23,14 +23,14 @@ class TestOrderViewSet(APITestCase):
 
         data = json.loads(res.content)
 
-        self.assertEqual(data[0]["product"][0]["title"], self.product.title)
-
-        self.assertEqual(data[0]["product"][0]["price"], self.product.price)
-
-        self.assertEqual(data[0]["product"][0]["active"], self.product.active)
-
+        self.assertEqual(data["results"][0]["product"][0]["title"], self.product.title)
+        self.assertEqual(data["results"][0]["product"][0]["price"], self.product.price)
         self.assertEqual(
-            data[0]["product"][0]["category"][0]["title"], self.category.title
+            data["results"][0]["product"][0]["active"], self.product.active
+        )
+        self.assertEqual(
+            data["results"][0]["product"][0]["category"][0]["title"],
+            self.category.title,
         )
 
     def test_create_order(self):
