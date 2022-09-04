@@ -17,16 +17,16 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.PYTHON_VERSION }}
-      
+
       - name: Install Poetry ${{ matrix.POETRY_VERSION }}}
         run:
           python -m ensurepip &&
           pip install --upgrade pip &&
           pip install poetry==${{ matrix.POETRY_VERSION }}
-      
+
       - name: Install Dependencies
         shell: bash
         run: poetry install
-      
+
       - name: Test
         run: poetry run pytest
