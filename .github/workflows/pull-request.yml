@@ -1,0 +1,17 @@
+name: Python Pull Request Workflow
+on: [pull_request]
+jobs:
+  qa:
+    name: Quality Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Wemake Python Styleguide
+        uses: wemake-services/wemake-python-styleguide@0.16.0
+        continue-on-error: true
+        with:
+          reporter: 'github-pr-review'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
