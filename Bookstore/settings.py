@@ -26,7 +26,12 @@ SECRET_KEY = "%=w&m6z(@@w2k0nu0tg(h9_!)yuukxk4r&a3joll7tq%mrgomt"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gabriel-bonagio-bookstore-api.herokuapp.com']
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "gabriel-bonagio-bookstore-api.herokuapp.com",
+]
+CSRF_TRUSTED_ORIGINS = ["https://gabriel-bonagio-bookstore-api.herokuapp.com"]
 
 
 # Application definition
